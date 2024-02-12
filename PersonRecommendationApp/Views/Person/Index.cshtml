@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PersonRecommendationApp.Models.ViewModels.PersonDetailsVM>
+
+@{
+    ViewData["Title"] = "All People";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MiddleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfRecommendations)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var person in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => person.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => person.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => person.MiddleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => person.LastName)
+                </td>
+                <td>
+                    @person.DateOfBirth.ToShortDateString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => person.NumberOfRecommendations)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@person.Id">Details</a> 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
